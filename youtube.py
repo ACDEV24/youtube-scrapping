@@ -1,6 +1,5 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
-import datetime
 import urllib3
 import json
 
@@ -62,13 +61,3 @@ def main():
 
 
 main()
-
-
-# Maybelline (L'Oréal Groupe)
-# Jolie de Vogue (L'Oréal Groupe)
-# Esika (Corporación Belcorp)
-# Avon (Avon Products Inc)
-# Natura (Natura&Co)
-# Masglo (Cerescos Ltda)
-# Yanbal (Unique-Yanbal Group)
-# Esika (Corporación Belcorp)
