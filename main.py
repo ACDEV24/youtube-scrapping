@@ -3,42 +3,10 @@ from pytube import Channel
 import xlsxwriter
 import urllib3
 import json
+from data import videos, titles, names
+from comments import getTopComments
 
 http = urllib3.PoolManager()
-
-videos = [
-    # 'https://www.youtube.com/channel/UCSRDdJckljibYXTbR_7LgOQ/videos' # TEST
-    # 'https://www.youtube.com/channel/UCcjjd6Y-zICiunmN_YsdBaQ/videos'  # TEST
-    'https://www.youtube.com/c/Yanbal-CanalOficial/videos',
-    'https://www.youtube.com/user/avoncolombia/videos',
-    'https://www.youtube.com/c/MaybellineNewYorkColombia/videos',
-    'https://www.youtube.com/c/EsikaBelcorp/videos',
-    'https://www.youtube.com/user/NaturaCoOficial/videos',
-    'https://www.youtube.com/c/MASGLOOficial/videos',
-    'https://www.youtube.com/c/VogueCosm%C3%A9ticosColombiaes/videos ',
-    'https://www.youtube.com/user/cosmeticosJolie/videos',
-]
-
-titles = [
-    'Titulo', 'Numero de visitas', 'Duracion',
-    'Año de publicación',
-    'Fecha de publicacion',
-    'Author',
-    'URL',
-    'Numero de comentarios',
-    'Numero de likes',
-    'Numero de favoritos',
-]
-
-names = [
-    'Avon',
-    'Maybelline',
-    'Esika',
-    'Natura',
-    'Masglo',
-    'Vogue',
-    'Jolie de vogue',
-]
 
 counter = 0
 
@@ -81,6 +49,7 @@ def getVideoExtraData(videoUrl, worksheet, row, column):
 
 
 for video in videos:
+    videosData = []
     channel_info = Channel(video)
 
     workbook = xlsxwriter.Workbook(f'files/{names[counter]}.xlsx')
@@ -152,6 +121,21 @@ for video in videos:
         except Exception as e:
             worksheet.write(row, column, url)
             print(f'FAILED: {e}')
+
+        videosData.append({
+            'title': title,
+            'views': views,
+            'url': url,
+        })
+    top5 = []
+
+    for i in range(5):
+        topVideo = max(videosData, key=lambda ev: ev['views'])
+        print(topVideo)
+        top5.append(topVideo)
+        videosData.remove(topVideo)
+
+    getTopComments(top5)
 
     counter += 1
     workbook.close()
