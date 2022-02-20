@@ -52,7 +52,9 @@ for video in videos:
     videosData = []
     channel_info = Channel(video)
 
-    workbook = xlsxwriter.Workbook(f'files/{names[counter]}.xlsx')
+    filePath = f'files/{names[counter]}'
+
+    workbook = xlsxwriter.Workbook(f'{filePath}.xlsx')
     worksheet = workbook.add_worksheet()
     row = 1
     column = 0
@@ -131,11 +133,10 @@ for video in videos:
 
     for i in range(5):
         topVideo = max(videosData, key=lambda ev: ev['views'])
-        print(topVideo)
         top5.append(topVideo)
         videosData.remove(topVideo)
 
-    getTopComments(top5)
+    getTopComments(top5, filePath)
 
     counter += 1
     workbook.close()

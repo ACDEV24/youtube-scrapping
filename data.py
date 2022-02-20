@@ -1,6 +1,6 @@
 videos = [
-    'https://www.youtube.com/channel/UCSRDdJckljibYXTbR_7LgOQ/videos' # TEST
-    # 'https://www.youtube.com/channel/UCcjjd6Y-zICiunmN_YsdBaQ/videos'  # TEST
+    # 'https://www.youtube.com/channel/UCSRDdJckljibYXTbR_7LgOQ/videos' # TEST
+    'https://www.youtube.com/channel/UCcjjd6Y-zICiunmN_YsdBaQ/videos'  # TEST
     # 'https://www.youtube.com/c/Yanbal-CanalOficial/videos',
     # 'https://www.youtube.com/user/avoncolombia/videos',
     # 'https://www.youtube.com/c/MaybellineNewYorkColombia/videos',
