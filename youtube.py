@@ -40,7 +40,8 @@ def main():
 
             publishedAt = videoDetails['items'][0]['snippet']['publishedAt'][:-10]
 
-            duration = videoDetails['items'][0]['contentDetails']['duration'].replace('PT', '')
+            duration = videoDetails['items'][0]['contentDetails']['duration'].replace(
+                'PT', '')
             duration = duration.replace('H', ' Horas ')
             duration = duration.replace('M', ' Minutos ')
             duration = duration.replace('S', ' Segundos ')
